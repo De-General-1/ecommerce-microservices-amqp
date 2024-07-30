@@ -32,7 +32,7 @@ async function getAllListings() {
 }
 
 async function getListings(shopId) {
-  return Listing.find({ shop: shopId });
+  return Listing.find({ shopId });
 }
 
 async function getListing(listingId) {
@@ -68,7 +68,35 @@ async function getProductsByShopId(shopId){
 };
 
 async function searchListings(query) {
-  return Listing.find(query);
+  try {
+    const cleanQuery = {};
+
+    // Iterate over each query parameter
+    for (const [key, value] of Object.entries(query)) {
+      if (key === 'categoryId' || key === 'shopId') {
+        // Validate and convert to ObjectId if the key is an ID field
+        if (mongoose.Types.ObjectId.isValid(value)) {
+          cleanQuery[key] = mongoose.Types.ObjectId(value);
+        } else {
+          throw new Error(`Invalid ObjectId for ${key}`);
+        }
+      } else if (key === 'price') {
+        // Handle price filtering (if implemented)
+        cleanQuery[key] = Number(value);
+      } else if (key === 'name') {
+        // Use regex for partial matching (case-insensitive)
+        cleanQuery[key] = { $regex: value, $options: 'i' };
+      } else {
+        // Default case, add directly to query
+        cleanQuery[key] = value;
+      }
+    }
+
+    console.log("Constructed query:", cleanQuery); // Debug the constructed query
+    return Listing.find(cleanQuery);
+  } catch (error) {
+    throw new Error('Error searching listings: ' + error.message);
+  }
 }
 
 module.exports = {

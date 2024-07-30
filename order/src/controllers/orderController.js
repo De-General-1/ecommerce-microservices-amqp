@@ -2,10 +2,24 @@ const orderService = require('../services/orderService');
 
 async function createOrder(req, res) {
   try {
-    const user = req.user.id
-    const {listings, address, phone } = req.body;
-    const orderData = { user, listings, address, phone };
-    const order = await orderService.createOrder(orderData);
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+    const user = req.user.id;
+    const { listings, address, phone } = req.body;
+
+    // Parse listings JSON string into an array of objects
+    let parsedListings;
+    try {
+      parsedListings = JSON.parse(listings);
+    } catch (err) {
+      return res.status(400).json({ error: 'Invalid listings format. Expected JSON.' });
+    }
+
+    // Construct order data
+    const orderData = { user, listings: parsedListings, address, phone };
+
+    // Create the order using the service
+    const order = await orderService.createOrder(orderData, token);
     res.status(201).json(order);
   } catch (error) {
     res.status(400).json({ error: error.message });

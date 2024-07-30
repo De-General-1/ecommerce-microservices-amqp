@@ -16,7 +16,8 @@ const listingSchema = new mongoose.Schema({
   },
   stock: {
     type: Number,
-    required: true
+    required: true,
+    default: 1
   },
   shopId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -30,7 +31,7 @@ const listingSchema = new mongoose.Schema({
   },
   image_path: {
     type: String,
-    required: true
+    required: false
   },
   createdAt: {
     type: Date,

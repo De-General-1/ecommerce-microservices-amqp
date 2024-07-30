@@ -22,6 +22,32 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Add the CSS styles directly in the head section */
+        #map {
+            height: 400px;  /* Set the height of the map */
+            width: 100%;    /* The width of the map should be 100% of the container */
+        }
+    </style>
+    <!-- Google Maps API key script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDncQsMBXX3-gI5Zn-OKmGfGlCPsFXxd58&callback=initMap" async defer></script>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of the desired coordinates
+            const location = { lat: 5.655609669338173 , lng: -0.18303100445773407 };
+            // The map, centered at the location
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: location,
+            });
+            // The marker, positioned at the location
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -82,13 +108,13 @@
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li class="megamenu-container active">
-                                    <a href="index.html" class="sf-with-ul">Home</a>
+                                    <a href="/" class="sf-with-ul">Home</a>
                                 </li>
                                 <li>
-                                    <a href="category.html" class="sf-with-ul">Shop</a>
+                                    <a href="/shop/<%=shop._id %>" class="sf-with-ul">Shop</a>
                                 </li>
                                 <li>
-                                    <a href="product.html" class="sf-with-ul">Product</a>
+                                    <a href="#" class="sf-with-ul">Product</a>
                                 </li>
                             </ul><!-- End .menu -->
                         </nav><!-- End .main-nav -->
@@ -179,7 +205,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Shop</a></li>
                         <li class="breadcrumb-item active" aria-current="page">My Account</li>
                     </ol>
@@ -224,57 +250,97 @@
 								    <div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel" aria-labelledby="tab-dashboard-link">
 								    	<p>Hello <span class="font-weight-normal text-dark"><%= user.username %></span> 
 								    	<br>
-								    	From your account dashboard you can view your <a href="#tab-orders" class="tab-trigger-link link-underline">recent orders</a> and <a href="#tab-account" class="tab-trigger-link">edit your account details</a> and 
+								    	From your account dashboard you can view your <a href="#tab-orders" class="tab-trigger-link link-underline">recent orders</a> and <a href="#tab-account" class="tab-trigger-link">edit your account details</a>
                                         <% if (user.role === 'shopOwner') { %>
-                                            <a href="/shop/<%=user._id %>" class="link-underline">Your shop</a>
-                                            
+                                            <a href="/shop/<%=shop._id %>" class="link-underline">and Your shop</a>
                                         <% } %>
                                     </p>
 								    </div><!-- .End .tab-pane -->
 
 								    <div class="tab-pane fade" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders-link">
-								    	<p>No order has been made yet.</p>
-								    	<a href="/" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
-								    			<div class="card card-dashboard">
-								    				<div class="card-body">
-								    					<h3 class="card-title">Orders </h3><!-- End .card-title -->
-
-														<p>User Name<br>
-														User Role<br>
-														Address<br>
-														Phone<br>
-														yourmail@mail.com<br>
-														</p>
-								    				</div><!-- End .card-body -->
-								    			</div><!-- End .card-dashboard -->
-								    		</div>
-                                        </div>
-								    </div><!-- .End .tab-pane -->
-
+                                        <% if (orders.length === 0) { %>
+                                            <p>No order has been made yet.</p>
+                                            <a href="/" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>
+                                        <% } else { %>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="card card-dashboard">
+                                                        <div class="card-body">
+                                                            <h3 class="card-title">User Information</h3>
+                                                            <p><strong>User Name:</strong> <%= user.username %></p>
+                                                            <p><strong>User Role:</strong> <%= user.role %></p>
+                                                            <p><strong>Address:</strong> <%= user.address %></p>
+                                                            <p><strong>Phone:</strong> <%= user.phone %></p>
+                                                            <p><strong>Email:</strong> <%= user.email %></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                            <% orders.forEach(order => { %>
+                                                <div class="row mt-4">
+                                                    <div class="col-lg-12">
+                                                        <div class="card card-dashboard">
+                                                            <div class="card-body">
+                                                                <h3 class="card-title">Order ID: <%= order._id %></h3>
+                                                                <p><strong>Order Address:</strong> <%= order.address %></p>
+                                                                <p><strong>Order Phone:</strong> <%= order.phone %></p>
+                                                                <p><strong>Total Price:</strong> $<%= order.totalPrice.toFixed(2) %></p>
+                                                                <p><strong>Order Date:</strong> <%= new Date(order.createdAt).toLocaleString() %></p>
+                                    
+                                                                <h4>Order Listings</h4>
+                                                                <ul>
+                                                                    <% order.listings.forEach(listing => { %>
+                                                                        <li>
+                                                                            <strong>Listing ID:</strong> <%= listing.listingId %> 
+                                                                            - <strong>Quantity:</strong> <%= listing.quantity %> 
+                                                                            - <strong>Price:</strong> $<%= listing.price.toFixed(2) %>
+                                                                        </li>
+                                                                    <% }); %>
+                                                                </ul>
+                                    
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <% }); %>
+                                        <% } %>
+                                    
+                                        <h3 class="mt-2">Track My Order</h3>
+                                        <!-- The map div element -->
+                                        <div id="map"></div>
+                                    </div><!-- .End .tab-pane -->
+                                    
                                     <div class="tab-pane fade" id="tab-deliveries" role="tabpanel" aria-labelledby="tab-deliveries-link">
-								    	<p>No Deliveries has been made yet.</p>
-								    	<a href="/" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
-								    			<div class="card card-dashboard">
-								    				<div class="card-body">
-								    					<h3 class="card-title">Deliveries </h3><!-- End .card-title -->
-
-														<p>User Name<br>
-														User Role<br>
-														Address<br>
-														Phone<br>
-														yourmail@mail.com<br>
-														</p>
-								    				</div><!-- End .card-body -->
-								    			</div><!-- End .card-dashboard -->
-								    		</div>
-                                        </div>
-								    </div><!-- .End .tab-pane -->
+                                        <% if (deliveries.length === 0) { %>
+                                            <p>No deliveries have been made yet.</p>
+                                            <a href="/" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>
+                                        <% } else { %>
+                                    
+                                            <% deliveries.forEach(order => { %>
+                                                <div class="row mt-4">
+                                                    <div class="col-lg-12">
+                                                        <div class="card card-dashboard">
+                                                            <div class="card-body">
+                                                                <h3 class="card-title">Delivery Details for Order <%= order.orderId %></h3>
+                                                                <% order.delivery.forEach(delivery => { %>
+                                                                    <p><strong>Delivery ID:</strong> <%= delivery._id %></p>
+                                                                    <p><strong>Delivery Status:</strong> <%= delivery.status %></p>
+                                                                    <p><strong>Delivery Address:</strong> <%= delivery.address %></p>
+                                                                    <p><strong>Delivery Phone:</strong> <%= delivery.phone %></p>
+                                                                    <p><strong>Delivery Date:</strong> <%= new Date(delivery.createdAt).toLocaleString() %></p>
+                                                                    <hr>
+                                                                <% }) %>
+                                                            </div><!-- End .card-body -->
+                                                        </div><!-- End .card-dashboard -->
+                                                    </div>
+                                                </div>
+                                            <% }) %>
+                                        <% } %>
+                                    </div><!-- .End .tab-pane -->
+                                    
+                                    
 
 								    <div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
 								    	<p>The following addresses will be used on the checkout page by default.</p>

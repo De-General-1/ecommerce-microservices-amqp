@@ -1,33 +1,30 @@
 const amqp = require('amqplib');
 const config = require('../config');
+const Listing = require('../models/product');
 
 async function setupMessageBroker(exchange, exchangeType, queue, routingKey, messageHandler) {
   try {
     const connection = await amqp.connect(config.rabbitMQURI);
     const channel = await connection.createChannel();
 
-    // Assert the exchange
+    // Assert the exchange and queue
     await channel.assertExchange(exchange, exchangeType, { durable: true });
-
-    // Assert the queue
     await channel.assertQueue(queue, { durable: true });
-
-    // Bind the queue to the exchange with the routing key
     await channel.bindQueue(queue, exchange, routingKey);
-
-    await channel.bindQueue(config.rabbitMQQueue, exchange, 'user.role.update');
-    
 
     // Handle messages received on the queue
     channel.consume(queue, async (msg) => {
       if (msg !== null) {
-        console.log("Received message:", msg.content.toString());
-        messageHandler(msg.content.toString());
-
-        if (message.type === 'UPDATE_USER_ROLE') {
-          await updateUserRole(message.userId, message.newRole);
+        try {
+          const message = JSON.parse(msg.content.toString());
+          console.log("Received message:", message);
+          await messageHandler(message);
+          channel.ack(msg); // Acknowledge message after successful processing
+        } catch (error) {
+          console.error("Error processing message:", error);
+          // Optionally handle failed messages, e.g., requeue or move to a dead-letter queue
+          channel.nack(msg); // Optionally reject the message
         }
-        channel.ack(msg);
       }
     });
 
@@ -52,17 +49,23 @@ async function sendToExchange(exchange, routingKey, message) {
   }
 }
 
-async function updateUserRole(userId, newRole) {
+async function updateInventory(item) {
   try {
-    await User.findByIdAndUpdate(userId, { role: newRole });
-    console.log(`User role updated: ${userId} to ${newRole}`);
+    const listing = await Listing.findById(item.listingId);
+    if (listing) {
+      listing.stock -= item.quantity;
+      await listing.save();
+      console.log(`Stock of product ${item.listingId} updated successfully`);
+    } else {
+      console.warn(`Product ${item.listingId} not found`);
+    }
   } catch (error) {
-    console.error('Error updating user role:', error);
+    console.error('Error updating inventory:', error);
   }
 }
 
 module.exports = {
   setupMessageBroker,
   sendToExchange,
-  updateUserRole
+  updateInventory,
 };

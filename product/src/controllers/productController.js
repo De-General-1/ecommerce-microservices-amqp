@@ -2,7 +2,7 @@ const listingService = require('../services/productsService');
 const shopService = require('../services/shopService')
 
 async function createListing(req, res) {
-  const { shopId, title, description, price, category, image_path } = req.body;
+  const { shopId, name, description, price, categoryId, image_path } = req.body;
     const userId = req.user.id;
   try {
     // Verify if the user is the owner of the shop
@@ -65,6 +65,7 @@ async function deleteListing(req, res) {
 
 async function searchListings(req, res) {
   try {
+    console.log("Received query:", req.query); // Add this line for debugging
     const listings = await listingService.searchListings(req.query);
     res.status(200).json(listings);
   } catch (error) {

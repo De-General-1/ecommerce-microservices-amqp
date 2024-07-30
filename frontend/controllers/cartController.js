@@ -25,6 +25,10 @@ exports.addToCart = async (req, res) => {
   }
 };
 
+exports.renderProductPage = async (req, res) => {
+  res.render('productDetails')
+}
+
 exports.getCart = async (req, res) => {
   try {
     const response = await fetch('http://localhost:3006/products/cart/getCart', {

@@ -57,7 +57,7 @@
 
 				<div class="header-center text-center">
 					<div class="title pt-2">
-						<h3>ADIDAS</h3>
+						<h3><%= shop.name %></h3>
 					</div>
 					<p>Free Delivery For Members</p>
 				</div>
@@ -163,7 +163,7 @@
                             <a href="#" class="social-icon youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
                             <a href="#" class="social-icon pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
                         </div><!-- End .soial-icons -->
-						<p class="footer-copyright">Copyright © 2019 Molla Store.<br>All Rights Reserved.</p>
+						<p class="footer-copyright">Copyright © 2024 De-General Molla Store.<br>All Rights Reserved.</p>
 					</div>
 				</div>
 			</div>
@@ -290,10 +290,10 @@
 	
 						<ul class="nav nav-pills justify-content-center" role="tablist">
 							<li class="nav-item">
-								<a class="nav-link active" id="new-women-link" data-toggle="tab" href="#new-women-tab" role="tab" aria-controls="new-women-tab" aria-selected="true">Womens Clothing</a>
+								<a class="nav-link active" id="new-women-link" data-toggle="tab" href="#new-women-tab" role="tab" aria-controls="new-women-tab" aria-selected="true">All Categories</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="new-men-link" data-toggle="tab" href="#new-men-tab" role="tab" aria-controls="new-men-tab" aria-selected="false">Mens Clothing</a>
+                            <li class="nav-item">
+								<a class="nav-link " href="/shop/createListing/<%= shop._id %>" role="tab">Create Listing</a>
 							</li>
 						</ul>
 					</div><!-- End .heading -->
@@ -302,554 +302,43 @@
 						<div class="tab-pane p-0 fade show active" id="new-women-tab" role="tabpanel" aria-labelledby="new-women-link">
 							<div class="products">
 								<div class="row justify-content-center">
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<span class="product-label label-circle label-sale">Sale</span>
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-6-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-6-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Tie-detail top</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													<span class="new-price">$50.00</span>
-													<span class="old-price">$84.00</span>
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 4 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-7-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-7-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Dress with a belt</a></h3><!-- End .product-title -->
-												<div class="product-price">
-												   $120.99
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-8-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-8-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Linen-blend paper bag trousers</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													$60.00
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-												<div class="product-nav product-nav-dots">
-													<a href="#" class="active" style="background: #d5ad81;"><span class="sr-only">Color name</span></a>
-													<a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-												</div><!-- End .product-nav -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<span class="product-label label-circle label-top">Top</span>
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-9-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-9-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Paper straw shopper</a></h3><!-- End .product-title -->
-												<div class="product-price">
-												   $80.95
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 6 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-10-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-10-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Trainers</a></h3><!-- End .product-title -->
-												<div class="product-price">
-												   $56.00
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<span class="product-label label-circle label-sale">Sale</span>
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-11-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-11-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Hooded top </a></h3><!-- End .product-title -->
-												<div class="product-price">
-													<span class="new-price">$50.00</span>
-													<span class="old-price">$84.00</span>
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 4 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-12-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-12-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Vest dress</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													$89.99
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-13-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-13-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Long-sleeved blouse</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													$84.00
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 3 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-14-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-14-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Denim jacket</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													$80.95
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-												<div class="product-nav product-nav-dots">
-													<a href="#" class="active" style="background: #7ba1c9;"><span class="sr-only">Color name</span></a>
-													<a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-													<a href="#" style="background: #feb143;"><span class="sr-only">Color name</span></a>
-													<a href="#" style="background: #f0c7b7;"><span class="sr-only">Color name</span></a>
-												</div><!-- End .product-nav -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-15-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-15-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Sunglasses</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													$56.00
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-								</div><!-- End .row -->
-							</div><!-- End .products -->
-						</div><!-- .End .tab-pane -->
-						<div class="tab-pane p-0 fade" id="new-men-tab" role="tabpanel" aria-labelledby="new-men-link">
-							<div class="products">
-								<div class="row justify-content-center">
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-8-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-8-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Linen-blend paper bag trousers</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													$60.00
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-												<div class="product-nav product-nav-dots">
-													<a href="#" class="active" style="background: #d5ad81;"><span class="sr-only">Color name</span></a>
-													<a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-												</div><!-- End .product-nav -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<span class="product-label label-circle label-top">Top</span>
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-9-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-9-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Paper straw shopper</a></h3><!-- End .product-title -->
-												<div class="product-price">
-												   $80.95
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 6 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-10-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-10-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Trainers</a></h3><!-- End .product-title -->
-												<div class="product-price">
-												   $56.00
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<span class="product-label label-circle label-sale">Sale</span>
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-11-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-11-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Hooded top </a></h3><!-- End .product-title -->
-												<div class="product-price">
-													<span class="new-price">$50.00</span>
-													<span class="old-price">$84.00</span>
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 4 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-12-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-12-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Vest dress</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													$89.99
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 2 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-									<div class="col-6 col-md-4 col-lg-3 col-xl-5col">
-										<div class="product product-7 text-center">
-											<figure class="product-media">
-												<a href="product-gallery-shop.html">
-													<img src="/assets/images/demos/demo-7/products/product-13-1.jpg" alt="Product image" class="product-image">
-													<img src="/assets/images/demos/demo-7/products/product-13-2.jpg" alt="Product image" class="product-image-hover">
-												</a>
-	
-												<div class="product-action-vertical">
-													<a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-													<a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-												</div><!-- End .product-action-vertical -->
-	
-												<div class="product-action">
-													<a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-												</div><!-- End .product-action -->
-											</figure><!-- End .product-media -->
-	
-											<div class="product-body">
-												<h3 class="product-title"><a href="product-gallery-shop.html">Long-sleeved blouse</a></h3><!-- End .product-title -->
-												<div class="product-price">
-													$84.00
-												</div><!-- End .product-price -->
-												<div class="ratings-container">
-													<div class="ratings">
-														<div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-													</div><!-- End .ratings -->
-													<span class="ratings-text">( 3 Reviews )</span>
-												</div><!-- End .rating-container -->
-											</div><!-- End .product-body -->
-										</div><!-- End .product -->
-									</div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+									<% if (products.length > 0) { %>
+                                        <% products.forEach(product => { %>
+                                          <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                            <div class="product product-7 text-center">
+                                              <figure class="product-media">
+                                                  <span class="product-label label-circle label-sale">Sale</span>
+                                                <a href="/products/<%= product._id %>">
+                                                  <img src="<%= product.image_path %>" alt="Product image" class="product-image">
+                                                  <img src="<%= product.image_path %>" alt="Product image" class="product-image-hover">
+                                                </a>
+                                                <div class="product-action">
+                                                  <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                </div>
+                                              </figure>
+                                      
+                                              <div class="product-body">
+                                                <h3 class="product-title"><a href="/products/<%= product._id %>"><%= product.name %></a></h3>
+                                                <div class="product-price">
+                                                  <span class="new-price">$<%= product.price %></span>
+                                                </div>
+                                                <div class="ratings-container">
+                                                  <div class="ratings">
+                                                    <div class="ratings-val" style="width:20%;"></div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        <% }); %>
+                                      <% } else { %>
+                                        <p class="title" style="margin-bottom: 10vh; text-align: center;">No products for this shop</p>
+                                      <% } %><!-- End .col-sm-6 col-md-4 col-lg-3 -->
 								</div><!-- End .row -->
 							</div><!-- End .products -->
 						</div><!-- .End .tab-pane -->
 					</div><!-- End .tab-content -->
 	
-					<div class="more-container text-center mt-2">
-						<a href="category.html" class="btn btn-outline-dark-3 btn-more"><span>Load more</span><i class="icon-long-arrow-right"></i></a>
-					</div><!-- End .more-container -->
 				</main>
 
 				<footer class="footer">

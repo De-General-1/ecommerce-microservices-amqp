@@ -24,6 +24,10 @@ class ShopService {
   async getShopById(id) {
     return Shop.findById(id);
   }
+  async getShopByOwnerId(ownerId) {
+    console.log("Entered OwnerId stuff")
+    return Shop.findOne({ owner: ownerId});
+  }
 
   async getAllShops() {
     return Shop.find();

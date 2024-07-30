@@ -19,7 +19,9 @@ app.use(cors(corsOptions));
 const authRoutes = require('./routes/auth');
 const cartRoutes = require('./routes/cartRoutes');
 const shopRoutes = require('./routes/shopRoutes');
+const productsRoutes = require('./routes/listingRoutes');
 const userDashboardRoutes = require('./routes/userDashboardRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
@@ -46,9 +48,11 @@ app.use((req, res, next) => {
 });
 // Routes
 app.use('/', authRoutes);
+app.use('/products', productsRoutes);
 app.use('/cart', cartRoutes);
 app.use('/userDashboard', userDashboardRoutes);
 app.use('/shop', shopRoutes);
+app.use('/orders', orderRoutes);
 
 const port = 2999;
 app.listen(port, () => {

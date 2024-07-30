@@ -2,26 +2,85 @@ const axios = require('axios');
 
 
 exports.userDashboard = async (req, res) => {
+  try {
+    const userId = req.session.userId; // Assuming you have the user ID stored in the session
+    const token = req.session.token;   // Assuming you have a token stored in the session
+
+    let shopData = null;
+    let orders = [];
+    let deliveries = [];
+
+    // Check if the user is a shop owner
     try {
-      const userId = req.session.userId; // Assuming you have the user ID stored in the session
-      const response = await fetch(`http://localhost:3006/auth/${userId}`, {
+      const shopResponse = await axios.get(`http://localhost:3006/shops/${userId}/shop`, {
         headers: {
-          'Authorization': `Bearer ${req.session.token}`, // Assuming you have a token stored in the session
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       });
-      console.log(userId)
-      if (!response.ok) {
-        throw new Error('Failed to fetch user data');
+      shopData = shopResponse.data; // Store the shop data if the user is a shop owner
+    } catch (shopError) {
+      if (shopError.response && shopError.response.status === 404) {
+        console.log('Shop not found for the user, proceeding with the rest of the implementation.');
+      } else {
+        console.error('Error checking shop ownership:', shopError);
+        return res.status(500).json({ error: 'Internal server error' });
       }
-  
-      const userData = await response.json();
-      res.render('userDashboard', { user: userData });
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-      res.status(500).json({ error: 'Internal server error' });
     }
-  };
+
+    // Fetch user data
+    const userResponse = await fetch(`http://localhost:3006/auth/${userId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!userResponse.ok) {
+      throw new Error('Failed to fetch user data');
+    }
+
+    const userData = await userResponse.json();
+
+    // Fetch user orders
+    try {
+      const ordersResponse = await axios.get(`http://localhost:3006/orders/users/${userId}/orders`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      orders = ordersResponse.data;
+    } catch (ordersError) {
+      console.error('Error fetching user orders:', ordersError);
+    }
+
+    // Fetch deliveries for each order
+    try {
+      for (const order of orders) {
+        const deliveriesResponse = await axios.get(`http://localhost:3006/deliveries/orders/${order._id}/deliveries`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        deliveries.push({
+          orderId: order._id,
+          delivery: deliveriesResponse.data
+        });
+      }
+    } catch (deliveriesError) {
+      console.error('Error fetching deliveries:', deliveriesError);
+    }   
+    console.log("from userDashboard:", deliveries)
+
+    // Render the userDashboard view with user data, shop data, orders, and deliveries
+    res.render('userDashboard', { user: userData, shop: shopData, orders, deliveries });
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
   exports.updateUserProfile = async (req, res) => {
     try {

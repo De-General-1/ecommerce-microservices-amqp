@@ -7,7 +7,7 @@ exports.renderHomePage = async (req, res) => {
             fetch('http://localhost:3006/shops'),
             fetch('http://localhost:3006/products'),
             fetch('http://localhost:3006/categories'),
-            fetch('http://localhost:3006/products', {
+            fetch('http://localhost:3006/products/cart/getCart', {
                 headers: {
                   'Authorization': `Bearer ${req.session.token}`
                 }

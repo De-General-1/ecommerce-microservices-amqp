@@ -8,6 +8,7 @@ const isAuthenticated = require('../utils/isAuthenticated')
 router.post('/',isAuthenticated, shopController.createShop);
 router.get('/', shopController.getAllShops);
 router.get('/:shopId', shopController.getShopById);
+router.get('/:ownerId/shop', shopController.getShopByOwnerId);
 router.post('/listings', isAuthenticated, listingController.createListing);
 router.get('/:shopId/listings', listingController.getListings);
 

@@ -40,6 +40,28 @@ exports.getShopById = async (req, res) => {
   }
 };
 
+exports.getShopByOwnerId = async (req, res) => {
+  try {
+    console.log("coming from getShopByOwnerId:",req.params)
+    const shop = await shopService.getShopByOwnerId(req.params.ownerId);
+    if (!shop) {
+      return res.status(404).json({ message: 'Shop not found' });
+    }
+
+    // Fetch categories and products related to the shop
+    const categories = await categoryService.getCategoriesByShopId(req.params.shopId);
+    const products = await productService.getProductsByShopId(req.params.shopId);
+    res.status(200).json(
+      shop,
+      categories,
+      products
+    );
+  } catch (error) {
+    console.error("From shop controller: ",error)
+    res.status(500).json({ error: error.message });
+  }
+};
+
 exports.getAllShops = async (req, res) => {
   try {
     console.log("Entered shop controller")
@@ -54,9 +76,8 @@ exports.getAllShops = async (req, res) => {
 exports.getShopDetails = async (req, res) => {
   try {
     const shopId = req.params.shopId;
-
     // Fetch shop details
-    console.log(shopId)
+    console.log("From backend getShopDetails: ",shopId)
     const shop = await shopService.getShopById(shopId);
 
     if (!shop) {

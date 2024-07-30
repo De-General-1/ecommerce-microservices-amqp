@@ -65,7 +65,7 @@
                                 </li>
                                 <% if(!isAuthenticated){ %>
                                     <li><a href="/login" class="text-white font-weight-medium">Sign in / Sign up</a></li>
-                                <%} %>
+                                <% } %>
                                 
                             </ul>
                         </li>
@@ -106,7 +106,7 @@
                         </div><!-- End .header-search -->
 
                         <div class="dropdown cart-dropdown">
-                            <a href="/cart/getCart" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <a href="/cart" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                 <i class="icon-shopping-cart"></i>
                                 <span class="cart-count"><%= totalItems %></span>
                             </a>
@@ -165,7 +165,14 @@
                                     <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
                                 </div><!-- End .dropdown-cart-total -->
                             </div><!-- End .dropdown-menu -->
-                        </div><!-- End .cart-dropdown -->
+                        </div>
+                        <% if(isAuthenticated){ %>
+                            <div class="account" style="font-size: 30px; margin: 5px;">
+                                <a href="/userDashboard" title="My account">
+                                    <i class="icon-user"></i>
+                                </a>
+                            </div>
+                        <% } %><!-- End .cart-dropdown -->
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-middle -->
@@ -248,8 +255,8 @@
                                         <div class="col-6 col-md-4">
                                             <div class="product product-4">
                                                 <figure class="product-media">
-                                                    <a href="product.html">
-                                                        <img src="assets/images/demos/demo-18/products/product-1-2.jpg" alt="Product image" class="product-image">
+                                                    <a href="/products/<%= product._id %>">
+                                                        <img src="<%= product.image_path %>" alt="Product image" class="product-image">
                                                         <img src="<%= product.image_path %>" alt="Product image" class="product-image-hover">
                                                     </a>
                                                     <% if(!isAuthenticated){ %>
@@ -268,7 +275,16 @@
                                                 <div class="product-body">
                                                     <div class="product-cat">
                                                     </div><!-- End .product-cat -->
-                                                    <h3 class="product-title"><a href="product.html"><%= product.name %></a></h3><!-- End .product-title -->
+                                                    <h3 class="product-title">
+                                                        
+                                                        <% if(isAuthenticated){ %>
+                                                            <a href="/products/<%= product._id %>"><%= product.name %></a>
+                                                        <% } else { %>
+                                                            <a href="/login"><%= product.name %></a>
+                                                        <% } %>
+                                                                               
+                                                    
+                                                    </h3><!-- End .product-title -->
                                                     <div class="product-price">
                                                         $ <%= product.price %>
                                                     </div><!-- End .product-price -->
@@ -852,7 +868,7 @@
           }
           return false;  // Prevent form submission
         }
-      </script>
+    </script>
 </body>
 
 
