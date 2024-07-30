@@ -110,9 +110,11 @@
                                 <li class="megamenu-container active">
                                     <a href="/" class="sf-with-ul">Home</a>
                                 </li>
-                                <li>
-                                    <a href="/shop/<%=shop._id %>" class="sf-with-ul">Shop</a>
-                                </li>
+                                <% if (user.role === 'shopOwner') { %>
+                                    <li>
+                                        <a href="/shop/<%=shop._id %>" class="sf-with-ul">Shop</a>
+                                    </li>
+                                <% } %>
                                 <li>
                                     <a href="#" class="sf-with-ul">Product</a>
                                 </li>
