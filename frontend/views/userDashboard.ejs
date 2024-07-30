@@ -303,6 +303,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <button onclick="cancelOrder('<%= order._id %>')">Cancel Order</button>
                                                 </div>
                                             <% }); %>
                                         <% } %>
@@ -797,6 +798,34 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script>
+        const token = '<%= token %>';
+    </script>
+    <script>
+        async function cancelOrder(orderId) {
+            console.log("from cancelOrder rjs:",orderId)
+          try {
+            console.log("from cancelOrder rjs:",orderId)
+            const response = await fetch(`/orders/cancel/${orderId}`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // or however you pass the token
+              }
+            });
+      
+            if (response.ok) {
+              alert('Order canceled successfully');
+              location.reload(); // Reload the page or redirect to update the list
+            } else {
+              alert('Failed to cancel order');
+            }
+          } catch (error) {
+            console.error('Error cancelling order:', error);
+            alert('Error cancelling order');
+          }
+        }
+      </script>
 </body>
 
 

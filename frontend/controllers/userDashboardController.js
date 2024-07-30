@@ -75,7 +75,7 @@ exports.userDashboard = async (req, res) => {
     console.log("from userDashboard:", deliveries)
 
     // Render the userDashboard view with user data, shop data, orders, and deliveries
-    res.render('userDashboard', { user: userData, shop: shopData, orders, deliveries });
+    res.render('userDashboard', { user: userData, shop: shopData, orders, deliveries, token });
   } catch (error) {
     console.error('Error fetching user data:', error);
     res.status(500).json({ error: 'Internal server error' });

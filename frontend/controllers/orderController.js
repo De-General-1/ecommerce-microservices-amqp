@@ -79,3 +79,25 @@ exports.createOrder = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+exports.cancelOrder = async (req, res) => {
+  try {
+    const orderId = req.params.orderId;
+
+    console.log("from cancelOrder:", orderId)
+    const response = await axios.delete(`http://localhost:3006/orders/${orderId}`, {
+      headers: {
+        'Authorization': `Bearer ${req.session.token}`
+      }
+    });
+
+    if (response.status === 200) {
+      res.json({ message: 'Order canceled successfully' });
+    } else {
+      res.status(response.status).json({ error: response.data.error });
+    }
+  } catch (error) {
+    console.error('Error canceling order:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};

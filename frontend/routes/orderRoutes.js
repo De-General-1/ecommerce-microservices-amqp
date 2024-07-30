@@ -4,6 +4,7 @@ const orderController = require('../controllers/orderController'); // Adjust the
 
 // Route to render the placeOrder page
 router.get('/placeOrder', orderController.renderPlaceOrder);
+router.delete('/cancel/:orderId', orderController.cancelOrder);
 router.post('/', orderController.createOrder);
 
 
